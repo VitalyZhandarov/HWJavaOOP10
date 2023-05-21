@@ -6,6 +6,12 @@ import org.junit.jupiter.api.Test;
 public class RadioTest {
 
     @Test
+    public void shouldCreateStationsWithLimits() {
+        Radio radio = new Radio(6);
+        Assertions.assertEquals(5, radio.getMaxStation());
+    }
+
+    @Test
     public void shouldSetStation() {
         Radio radio = new Radio();
 
@@ -24,7 +30,7 @@ public class RadioTest {
         radio.setMaxNumbStation();
 
         int expected = 9;
-        int actual = radio.getCurrentStation();
+        int actual = radio.getMaxStation();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -35,7 +41,7 @@ public class RadioTest {
 
         radio.setCurrentStation(10);
 
-        int expected = 0;
+        int expected = radio.getCurrentStation();
         int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
@@ -48,7 +54,7 @@ public class RadioTest {
         radio.setMinNumbStation();
 
         int expected = 0;
-        int actual = radio.getCurrentStation();
+        int actual = radio.getMinStation();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -59,7 +65,7 @@ public class RadioTest {
 
         radio.setCurrentStation(-1);
 
-        int expected = 0;
+        int expected = radio.getCurrentStation();
         int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
